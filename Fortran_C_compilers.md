@@ -1,4 +1,4 @@
-# linux下FORTRAN 和 C 的编译器
+# linux系统下FORTRAN 和 C 的编译器
 
 
 
