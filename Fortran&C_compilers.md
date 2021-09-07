@@ -1,4 +1,4 @@
-# GPU编程笔记
+# linux下FORTRAN 和 C 的编译器
 
 
 
