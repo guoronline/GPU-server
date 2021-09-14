@@ -38,7 +38,7 @@ Fortran作为历史比较悠久的编程语言，积累了大量的代码，要�
 
 在csource.cpp文件：
 
-```
+```cpp
 #include <stdio.h>
 #include <stdlib.h>
  
@@ -54,7 +54,7 @@ int ADD(int* a, int* b, int* c) {
 
 ### 1、利用命令行输入的方式生成：
 
-```
+```bash
 cl.exe /c csource.cpp
 lib.exe /OUT:FcallC.lib csource.obj
 ```
@@ -138,7 +138,7 @@ extern "c" {
 
 **main.c**
 
-```
+```c
 #include <stdio.h>
 void SUB_FORTRAN(int *, float *, double *);
 double FUNCTION_FORTRAN(double *);
@@ -159,7 +159,7 @@ int main()
 
 **sub.f90**
 
-```
+```fortran
 subroutine sub_fortran(NumInt,NumFloat,NumDouble)
       use ISO_C_BINDING
       implicit none
@@ -181,7 +181,7 @@ end function
 
 **执行命令：**
 
-```fortran
+```bash
 ifort –c sub.f90  –o sub.obj 
 ifort –c sub.f90  –o sub.lib
 ```
