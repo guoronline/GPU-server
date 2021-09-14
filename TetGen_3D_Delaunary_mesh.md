@@ -50,7 +50,9 @@ make
 
 **方式二：**
 
-另外一种方式：the files are usually easy to compile directly on the command line. Assume you’re using g++, first compile the file predicates.cxx to get an object file: 先执行：
+另外一种方式：the files are usually easy to compile directly on the command line. Assume you’re using g++, first compile the file predicates.cxx to get an object file: 
+
+先执行：
 
 ```bash
 g++ -c predicates.cxx 
@@ -58,7 +60,7 @@ g++ -c predicates.cxx
 
 To compile TetGen into an executable file, use the following command: 
 
-在执行：
+再执行：
 
 ```bash
 g++ -o tetgen tetgen.cxx predicates.o –lm 
@@ -71,7 +73,8 @@ g++ -o tetgen tetgen.cxx predicates.o –lm
 To compile TetGen into a library, the symbol TETLIBRARY is needed:
 
 ```
-g++ -DTETLIBRARY -c tetgen.cxx
+g++ -O3 -DTETLIBRARY -c tetgen.cxx
+g++ -O0 -c predicates.cxx
 ar r libtet.a tetgen.o predicates.o 
 ```
 
