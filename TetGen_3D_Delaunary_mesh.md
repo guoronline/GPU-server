@@ -14,11 +14,29 @@
 
 .\ParaView-5.9.0-Windows-Python3.8-msvc2017-64bit\bin\文件夹里的paraview.exe
 
+操作指南：[ParaView Documentation 5.8.1 documentation](https://docs.paraview.org/en/latest/)
+
+
+
 ###  2.TetView软件
 
-下载位置和软件说明：[TetView: A Tetrahedral Mesh and Piecewise Linear Complex Viewer](http://wias-berlin.de/software/tetgen/tetview.html)
+下载位置和软件说明：
 
+[TetView: A Tetrahedral Mesh and Piecewise Linear Complex Viewer](http://wias-berlin.de/software/tetgen/tetview.html)
 
+可用于查看如下格式文件：
+
+- [.node files](http://wias-berlin.de/software/tetgen/fformats.node.html)
+
+- [.poly files](http://wias-berlin.de/software/tetgen/fformats.poly.html)
+
+- [.smesh files](http://wias-berlin.de/software/tetgen/fformats.smesh.html)
+
+- [.ele files](http://wias-berlin.de/software/tetgen/fformats.ele.html)
+
+- [.face files](http://wias-berlin.de/software/tetgen/fformats.face.html)
+
+  
 
 ## 二、TetGen源代码下载
 
@@ -104,7 +122,18 @@ tetgen -p example.poly
 
 （**一开始失败几次，没找到原因，好像是没提前执行tetgen –h**）
 
- 
+ 网格划分后会生成网格文件：.node、.ele、.face、.edge
+
+```
+example.1.node.
+example.1.ele.
+example.1.face.
+example.1.edge.
+```
+
+可以用网格显示软件查看网格文件：.node、.ele、.face、.edge。
+
+
 
 加密网格
 
