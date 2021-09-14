@@ -86,7 +86,7 @@ xilink main.obj
 
 
 
-# 三、GNU编译器
+## 三、GNU编译器
 
  参考：
 
