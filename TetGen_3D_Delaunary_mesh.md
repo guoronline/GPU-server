@@ -2,7 +2,9 @@
 
 20200126郭
 
-## 一、ParaView软件
+## 一、网格显示软件
+
+### 1.ParaView软件
 
 下载位置：https://www.paraview.org/download/
 
@@ -12,7 +14,11 @@
 
 .\ParaView-5.9.0-Windows-Python3.8-msvc2017-64bit\bin\文件夹里的paraview.exe
 
- 
+###  2.TetView软件
+
+下载位置和软件说明：[TetView: A Tetrahedral Mesh and Piecewise Linear Complex Viewer](http://wias-berlin.de/software/tetgen/tetview.html)
+
+
 
 ## 二、TetGen源代码下载
 
