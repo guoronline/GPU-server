@@ -42,7 +42,9 @@ http://wias-berlin.de/software/tetgen/
 
 **方式一：**
 
-**make**
+```bash
+make
+```
 
 （**前提**：安装过CMake编译环境，https://baike.baidu.com/item/mingw/1777782?fr=aladdin）
 
@@ -50,13 +52,17 @@ http://wias-berlin.de/software/tetgen/
 
 另外一种方式：the files are usually easy to compile directly on the command line. Assume you’re using g++, first compile the file predicates.cxx to get an object file: 先执行：
 
-**g++ -c predicates.cxx** 
+```bash
+g++ -c predicates.cxx 
+```
 
 To compile TetGen into an executable file, use the following command: 
 
 在执行：
 
-**g++ -o tetgen tetgen.cxx predicates.o –lm** 
+```bash
+g++ -o tetgen tetgen.cxx predicates.o –lm 
+```
 
  
 
@@ -64,9 +70,10 @@ To compile TetGen into an executable file, use the following command:
 
 To compile TetGen into a library, the symbol TETLIBRARY is needed:
 
-**g++ -DTETLIBRARY -c tetgen.cxx** 
-
-**ar r libtet.a tetgen.o predicates.o** 
+```
+g++ -DTETLIBRARY -c tetgen.cxx
+ar r libtet.a tetgen.o predicates.o 
+```
 
  
 
@@ -76,15 +83,15 @@ To compile TetGen into a library, the symbol TETLIBRARY is needed:
 
 再加压目录中继续执行：
 
-**tetgen –h**
+```bash
+tetgen –h
+```
 
- 
+ 保证文件夹中包含算例文件 example.poly, 是一个简单的算例，见手册中5.4.3 A PLC with Two Sub-regions and Two Holes节。 
 
-保证文件夹中包含算例文件 example.poly, 是一个简单的算例，见手册中5.4.3 A PLC with Two Sub-regions and Two Holes节。
-
- 
-
-**tetgen -p example.poly**
+```
+tetgen -p example.poly
+```
 
 （**一开始失败几次，没找到原因，好像是没提前执行tetgen –h**）
 
@@ -92,13 +99,17 @@ To compile TetGen into a library, the symbol TETLIBRARY is needed:
 
 加密网格
 
-**tetgen -pq example.poly** 
+```
+tetgen -pq example.poly 
+```
 
  
 
 指定加密网格信息q1.2 是网格质量
 
-**tetgen -pq1.2V example.poly**
+```
+tetgen -pq1.2V example.poly
+```
 
  
 
@@ -108,7 +119,9 @@ To compile TetGen into a library, the symbol TETLIBRARY is needed:
 
 也可以执行：-k 
 
-**tetgen -p -k example.poly** 
+```
+tetgen -p -k example.poly 
+```
 
 生成ParaView格式的网格信息文件example.1.vtk。
 
@@ -116,11 +129,15 @@ To compile TetGen into a library, the symbol TETLIBRARY is needed:
 
 加密网格
 
-**tetgen -pq –k example.poly** 
+```
+tetgen -pq –k example.poly 
+```
 
 指定加密网格信息，q1.2V 是网格质量
 
-**tetgen -pq1.2V –k example.poly** 
+```
+tetgen -pq1.2V –k example.poly 
+```
 
  
 
@@ -134,11 +151,15 @@ To compile TetGen into a library, the symbol TETLIBRARY is needed:
 
 **手册中这个命令有错，编译通不过。**
 
+```
 g++ -o test tetcall.cxx -L./ -ltet
+```
 
 应该改为：
 
+```
 g++ -DTETLIBRARY -o test tetcall.cxx -L./ -ltet
+```
 
   
 
@@ -158,6 +179,8 @@ https://blog.csdn.net/silangquan/article/details/10475015
 
 **Stellar**的中文意思是恒星，这是一个博士写的用于优化网格的软件，可以将生成的单元模型进行一些smooth、删除重复边的操作。
 
+
+
 # tetview是用于查看网格模型的工具
 
 ## Medit 模型查看软件
@@ -166,7 +189,9 @@ TetGen can export its tetrahedral mesh into the .mesh format. It can be then vis
 
 For viewing mesh under Medit, add a -g switch in the command line. TetGen will additionally output a file named **example.1.mesh**, which can be read and rendered directly by TetGen. Try running:
 
-**tetgen -pg example.poly**
+```
+tetgen -pg example.poly
+```
 
 **medit example.1**
 
@@ -186,16 +211,16 @@ For viewing mesh under Medit, add a -g switch in the command line. TetGen will a
 
 将导出的ply模型放到tetgen的目录，终端执行：
 
-./tetgen -p torus.ply 
+```
+./tetgen -p torus.ply
+```
 
 
  ![https://img-blog.csdn.net/20130829104252171?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvc2lsYW5ncXVhbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast](./images/clip_image008.jpg)
 
- 
+  
 
- 
-
-## 用VS编译时的问题
+# 用VS编译时的问题
 
 #### 1、[严重性代码说明项目文件行错误C4996'strcpy'，strcpy头文件](https://www.cnblogs.com/didiaoxiaoguai/p/9022413.html)
 
