@@ -84,29 +84,25 @@ xilink main.obj
 
 
 
+
+
+# 三、GNU编译器
+
+ 参考：
+
+[Linux基础——gcc编译、静态库与动态库（共享库）](https://blog.csdn.net/daidaihema/article/details/80902012)
+
+ [gcc系强制链接静态库（同时有.so和.a）](https://blog.csdn.net/youqika/article/details/54617525)
+
+
+
+
+
 # 参考文章：
 
-[在Intel Visual Fortran中混合编程一：使用Fortran调用C语言静态库_jpfalan的博客-CSDN博客](https://blog.csdn.net/jpfalan/article/details/104562193)
-
 [C++ / vs 如何生成自己的静态库(lib)文件 - 程序员大本营 (pianshen.com)](https://www.pianshen.com/article/388260710/)
-
-[几种Fortran+编译器 - 百度文库 (baidu.com)](https://wenku.baidu.com/view/ca4ea34de518964bcf847ca8.html)
-
-  
-
-[Tutorial: Using C/C++ and Fortran together](http://www.yolinux.com/TUTORIALS/LinuxTutorialMixingFortranAndC.html)
-
- 
-
-[C/C++/Fortran混合编程浅谈（一）直接链接方式](https://www.cnblogs.com/xunxun1982/archive/2010/08/25/1808512.html)
 
 [VS中创建静态库&C/C++静态库的使用](https://blog.csdn.net/chunyexiyu/article/details/31014221)
 
  
-
-# gcc系强制链接静态库（同时有.so和.a）
-
- 
-
- [gcc系强制链接静态库（同时有.so和.a）](https://blog.csdn.net/youqika/article/details/54617525)
 
