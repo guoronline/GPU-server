@@ -179,12 +179,22 @@ ifort –c sub.f90  –o sub.obj
 ifort main.obj sub.obj –o main.exe
 ```
 
-**linux下：**
+**linux下：**（没有成功）
 
 ```
-icl –o main.o –c main.c
-ifort –c sub.f90  –o sub.o 
-ifort main.o sub.o –o main
+icc -c main.c -o main.o
+ifort -c sub.f90 -o sub.o
+ifort main.o sub.o -o main
+
+```
+
+显示以下错误：
+
+```
+for_main.c:(.text+0x2e): undefined reference to `MAIN__'
+main.o: In function `main':
+main.c:(.text+0x41): undefined reference to `SUB_FORTRAN'
+main.c:(.text+0x4a): undefined reference to `FUNCTION_FORTRAN'
 ```
 
 windows下生成静态库lib和动态库dll文件：
