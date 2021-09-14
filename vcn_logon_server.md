@@ -6,9 +6,9 @@
 
 点击：System-->Log Out，如下图：
 
-![image-20210914195148865](C:\Users\VCFEM\AppData\Roaming\Typora\typora-user-images\image-20210914195148865.png)
+![image-20210914195148865](.\images\logout.png)
 
 随后点击：Logout Anyway；
 
-![image-20210914195400327](C:\Users\VCFEM\AppData\Roaming\Typora\typora-user-images\image-20210914195400327.png)
+![image-20210914195400327](.\images\logoutanyway.png)
 
