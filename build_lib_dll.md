@@ -104,6 +104,9 @@ xilink main.obj
 
  
 
- 
+# gcc系强制链接静态库（同时有.so和.a）
 
  
+
+ [gcc系强制链接静态库（同时有.so和.a）](https://blog.csdn.net/youqika/article/details/54617525)
+
