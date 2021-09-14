@@ -116,11 +116,11 @@ gcc –o main.exe main.c sub.f90
 
 #####  linux下：
 
-
-
-**icl -c sub.c -o sub.obj** 
-
-**ifort -c main.f90 -o main.obj** 
+```
+gcc –o main.o –c main.c
+gfortran –o sub.o –c sub.f90
+gcc –o main main.o sub.o
+```
 
  
 
@@ -171,18 +171,28 @@ end function
 
 **执行命令：**
 
-windows下：
+**windows下：**
 
 ```
 icl –o main.obj –c main.c
 ifort –c sub.f90  –o sub.obj 
-ifort –c sub.f90  –o sub.lib
 ifort main.obj sub.obj –o main.exe
 ```
 
-linux下：
+**linux下：**
 
+```
+icl –o main.o –c main.c
+ifort –c sub.f90  –o sub.o 
+ifort main.o sub.o –o main
+```
 
+windows下生成静态库lib和动态库dll文件：
+
+```
+ifort –c sub.f90  –o sub.lib
+ifort –c sub.f90  –o sub.dll
+```
 
 
 
@@ -270,15 +280,27 @@ double func_c_(double *n3)
 
 **执行命令：**
 
-**gcc** **–o sub.o sub.c**
+**windows下：**
 
-**gfortran** **–o main.o main.f90**
-
-**gfortran** **–o main.exe main.o sub.o**
+```
+gcc –o sub.o sub.c
+gfortran –o main.o main.f90
+gfortran –o main.exe main.o sub.o
+```
 
 **或是直接**
 
-**gfortran** **–o main.exe main.f90 sub.c**
+```
+gfortran –o main.exe main.f90 sub.c
+```
+
+ **linux下：**
+
+```
+gcc –o sub.o sub.c
+gfortran –o main.o main.f90
+gfortran –o main main.o sub.o
+```
 
  
 
@@ -367,13 +389,41 @@ double FUNC_D(double var2d[3][2])
 
 **执行命令：**
 
-**icl -c sub.c -o sub.obj** 
+ **windows下：**
 
-**ifort -c main.f90 -o main.obj** 
+```
+icl -c sub.c -o sub.obj
+ifort -c main.f90 -o main.obj
+ifort main.obj sub.obj -o main.exe 
+```
 
-**ifort main.obj sub.obj -o main.exe** 
+ **linux下：**（没成功）
 
- 
+```bash
+icc -c sub.c -o sub.o
+ifort -c main.f90 -o main.o
+ifort main.o sub.o -o main
+```
+
+显示如下错误：
+
+```
+main.o: In function `MAIN__':
+main.f90:(.text+0x51): undefined reference to `sub_c_'
+main.f90:(.text+0x5b): undefined reference to `func_c_'
+main.f90:(.text+0x34c): undefined reference to `func_d_'
+```
+
+
+
+windows下生成静态库lib和动态库dll文件：
+
+```bash
+icl /LD sub.c					#生成动态库sub.dll
+icl -LD sub.c -o sub.lib		#生成静态库sub.lib  -LD和/LD都行
+```
+
+
 
 # 参考文章：
 
@@ -383,7 +433,7 @@ double FUNC_D(double var2d[3][2])
 
 [几种Fortran+编译器 - 百度文库 (baidu.com)](https://wenku.baidu.com/view/ca4ea34de518964bcf847ca8.html)
 
-  
+[Intel C/C++ Fortran编译器的使用](http://scc.ustc.edu.cn/zlsc/pxjz/201408/W020140804356091396413.pdf)
 
 [Tutorial: Using C/C++ and Fortran together](http://www.yolinux.com/TUTORIALS/LinuxTutorialMixingFortranAndC.html)
 
