@@ -22,3 +22,13 @@
 
 ### 五、[使用TetGen进行3D Delaunary网格划分](TetGen_3D_Delaunary_mesh.md)
 
+
+
+# 重要的网络资源
+
+1. [鳥哥的 Linux 私房菜](http://linux.vbird.org/)
+
+   linux的操作都有，很全！！！
+
+2. [鳥哥的 Linux 私房菜 -- 基礎學習篇](http://linux.vbird.org/linux_basic/)
+
