@@ -38,7 +38,9 @@ Linux环境：redhat6.5
 
 遵循约定：C/C++默认传值，Fortran传址。
 
-一般来说，尽量采用相同编译器家族：GNU家族（gcc\gfortran版本）或Intel家族（Intel C Compiler和Intel Fortran Compiler版本）。
+一般来说，尽量采用相同编译器家族：GNU家族（gcc\gfortran版本）是这样；但Intel家族（Intel C Compiler和Intel Fortran Compiler版本）不一样。
+
+intel编译器在windows中，c调fortran时，编译器都采用intel的ifort和icl；但fortran调C时，只能用微软的c编译器cl和intel的编译器ifort。**深坑**
 
 
 
