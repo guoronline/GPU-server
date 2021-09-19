@@ -100,7 +100,9 @@ xilink main.obj
 
 # 参考文章：
 
-[C++ / vs 如何生成自己的静态库(lib)文件 - 程序员大本营 (pianshen.com)](https://www.pianshen.com/article/388260710/)
+ [linux函式库管理](http://cn.linux.vbird.org/linux_basic/0520source_code_and_tarball_5.php#library)
+
+[C++ / vs 如何生成自己的静态库(lib)文件](https://www.pianshen.com/article/388260710/)
 
 [VS中创建静态库&C/C++静态库的使用](https://blog.csdn.net/chunyexiyu/article/details/31014221)
 
