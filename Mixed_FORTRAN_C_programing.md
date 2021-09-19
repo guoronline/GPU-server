@@ -38,9 +38,11 @@
 
 ## 1. gcc\gfortran版本
 
-#### main.c
+#### 源程序
 
-```
+##### main.c
+
+```c
 #include <stdio.h>
 void sub_fortran_(int *,float *,double *);
 double function_fortran_(double *);
@@ -60,9 +62,9 @@ int main()
 }
 ```
 
-#### sub.f90
+##### sub.f90
 
-```
+```fortran
 subroutine Sub_Fortran(NumInt,NumFloat,NumDouble)
       implicit none
       integer :: NumInt
@@ -78,9 +80,9 @@ real(8) function Function_Fortran(NumDouble)
 end function
 ```
 
-#### sub.f90(F2003方式)
+##### sub.f90(F2003方式)
 
-```
+```fortran
 subroutine Sub_Fortran(NumInt,NumFloat,NumDouble)
       use ISO_C_BINDING
       implicit none
@@ -98,7 +100,9 @@ real(c_double) function Function_Fortran(NumDouble)
 end function
 ```
 
-#### 编译连接
+#### 混合编程方式一
+
+分别生成二进制程序后，一起连接成可执行程序。
 
 ##### windows下：
 
@@ -108,7 +112,7 @@ gfortran –o sub.o –c sub.f90
 gcc –o main.exe main.o sub.o
 ```
 
-**或者直接**
+或者直接
 
 ```bash
 gcc –o main.exe main.c sub.f90
@@ -116,13 +120,119 @@ gcc –o main.exe main.c sub.f90
 
 #####  linux下：
 
-```
+```bash
 gcc –o main.o –c main.c
 gfortran –o sub.o –c sub.f90
 gcc –o main main.o sub.o
 ```
 
- 
+#### 混合编程方式二
+
+linux下，采用静态库和动态库的方式。
+
+ 参考：[gcc编译、静态库与动态库（共享库）](https://blog.csdn.net/daidaihema/article/details/80902012)
+
+
+
+##### 采用静态库
+
+**第一步：生成与位置无关的.o文件**
+
+```bash
+gfortran -o sub.o -c sub.f90
+```
+
+**第二步：创建静态库**
+
+将所有.o文件打包为静态库，r将文件插入静态库中，c创建静态库，不管库是否存在，s写入一个目标文件索引到库中，或者更新一个存在的目标文件索引。
+
+```bash
+ar rcs libMyTest.a sub.o        
+mkdir lib
+mv libMyTest.a ./lib         将静态库文件放置lib文件夹下
+nm ./lib/libMyTest.a         查看库中包含的函数等信息
+```
+
+**第三步：使用静态库**
+
+第一种方法：成功！！！
+gcc + 源文件 + -L 静态库路径 + -l静态库名 + -I头文件目录 + -o 可执行文件名
+
+```bash
+gcc main.c -L lib -l MyTest -o app
+./app
+```
+
+第二种方法：成功！！！
+gcc + 源文件 + -I头文件 + libxxx.a + -o 可执行文件名
+
+```bash
+gcc main.c lib/libMyTest.a -o app
+./app
+```
+
+
+
+##### 采用动态库
+
+**第一步：生成与位置无关的.o文件**
+
+```bash
+gfortran -fPIC -o sub.o -c sub.f90   参数-fPIC表示生成与位置无关代码
+```
+
+**第二步：创建动态库**
+
+```bash
+gcc -shared -o libMyTest.so sub.o        参数：-shared 制作动态库 -o：重命名生成的新文件
+或 gfortran -shared -o libMyTest.so sub.o	
+mkdir lib
+mv libMyTest.so ./lib
+nm ./lib/libMyTest.so         查看库中包含的函数等信息
+```
+
+**第三步：使用动态库**
+
+**第一种方法**：一开始不成功，后来添加环境变量后成功了！！！
+gcc + 源文件 + -L 动态库路径 + -l动态库名 + -I头文件目录 + -o 可执行文件名
+
+```bash
+gcc main.c -L lib -lMyTest -o app
+./app
+```
+
+执行后显示如下错误。
+
+```
+./app: error while loading shared libraries: libMyTest.so: cannot open shared object file: No such file or directory
+```
+
+（执行失败，找不到链接库）
+
+**最终解决办法**
+
+将lib文件夹添加到环境变量LD_LIBRARY_PATH中。
+
+```bash
+var=$(pwd)
+echo $var/lib
+export LD_LIBRARY_PATH=$var/lib:$LD_LIBRARY_PATH
+或 export LD_LIBRARY_PATH=/root/CFortran/GNU_VER/Fortran_call_C/lib:$LD_LIBRARY_PATH
+```
+
+
+
+**第二种方法**：成功！！！
+gcc + 源文件 + -I头文件 + libxxx.so + -o 可执行文件名
+
+```bash
+gcc main.c -I include lib/libMyTest.so -o app
+./app
+```
+
+（执行成功，已经指明了动态库的路径）
+
+
 
 ## 2. Intel版本
 
@@ -130,7 +240,7 @@ gcc –o main main.o sub.o
 
 **main.c**
 
-```
+```c
 #include <stdio.h>
 void SUB_FORTRAN(int *, float *, double *);
 double FUNCTION_FORTRAN(double *);
@@ -151,7 +261,7 @@ int main()
 
 **sub.f90**
 
-```
+```fortran
 subroutine sub_fortran(NumInt,NumFloat,NumDouble)
       use ISO_C_BINDING
       implicit none
@@ -173,7 +283,7 @@ end function
 
 **windows下：**
 
-```
+```bash
 icl –o main.obj –c main.c
 ifort –c sub.f90  –o sub.obj 
 ifort main.obj sub.obj –o main.exe
@@ -181,7 +291,7 @@ ifort main.obj sub.obj –o main.exe
 
 **linux下：**（没有成功）
 
-```
+```bash
 icc -c main.c -o main.o
 ifort -c sub.f90 -o sub.o
 ifort main.o sub.o -o main
@@ -190,7 +300,7 @@ ifort main.o sub.o -o main
 
 显示以下错误：
 
-```
+```bash
 for_main.c:(.text+0x2e): undefined reference to `MAIN__'
 main.o: In function `main':
 main.c:(.text+0x41): undefined reference to `SUB_FORTRAN'
@@ -199,7 +309,7 @@ main.c:(.text+0x4a): undefined reference to `FUNCTION_FORTRAN'
 
 windows下生成静态库lib和动态库dll文件：
 
-```
+```bash
 ifort –c sub.f90  –o sub.lib
 ifort –c sub.f90  –o sub.dll
 ```
@@ -210,9 +320,11 @@ ifort –c sub.f90  –o sub.dll
 
 ## 1. gcc\gfortran版本
 
+#### 源程序
+
 **main.f90**
 
-```
+```fortran
 program main
       implicit none
       interface 
@@ -271,7 +383,7 @@ end program
 
 **sub.c**
 
-```
+```c
 #include <math.h>
 void sub_c_(int *,float *,double *);
 double func_c_(double *);
@@ -288,29 +400,136 @@ double func_c_(double *n3)
 }
 ```
 
-**执行命令：**
+#### 混合编程方式一
 
-**windows下：**
+分别生成二进制程序后，一起连接成可执行程序。
 
-```
+##### windows下：
+
+```bash
 gcc –o sub.o sub.c
 gfortran –o main.o main.f90
 gfortran –o main.exe main.o sub.o
 ```
 
-**或是直接**
+或是直接
 
-```
+```bash
 gfortran –o main.exe main.f90 sub.c
 ```
 
- **linux下：**
+#####  linux下：
 
-```
+```bash
 gcc –o sub.o sub.c
 gfortran –o main.o main.f90
 gfortran –o main main.o sub.o
 ```
+
+
+
+#### 混合编程方式二
+
+linux下，采用静态库和动态库的方式。
+
+ 参考：[gcc编译、静态库与动态库（共享库）](https://blog.csdn.net/daidaihema/article/details/80902012)
+
+
+
+##### 采用静态库
+
+**第一步：生成与位置无关的.o文件**
+
+```bash
+gcc -o sub.o -c sub.c
+```
+
+**第二步：创建静态库**
+
+将所有.o文件打包为静态库，r将文件插入静态库中，c创建静态库，不管库是否存在，s写入一个目标文件索引到库中，或者更新一个存在的目标文件索引。
+
+```bash
+ar rcs libMyTest.a sub.o
+mkdir lib
+mv libMyTest.a ./lib         将静态库文件放置lib文件夹下
+nm ./lib/libMyTest.a         查看库中包含的函数等信息
+```
+
+**第三步：使用静态库**
+
+第一种方法：成功！！！
+gcc + 源文件 + -L 静态库路径 + -l静态库名 + -I头文件目录 + -o 可执行文件名
+
+```bash
+gfortran main.f90 -L lib -l MyTest -o app
+./app
+```
+
+第二种方法：成功！！！
+gcc + 源文件 + -I头文件 + libxxx.a + -o 可执行文件名
+
+```bash
+gfortran main.f90 lib/libMyTest.a -o app
+./app
+```
+
+
+
+##### 采用动态库
+
+**第一步：生成与位置无关的.o文件**
+
+```bash
+gcc -fPIC -o sub.o -c sub.c   参数-fPIC表示生成与位置无关代码
+```
+
+**第二步：创建动态库**
+
+```bash
+gcc -shared -o libMyTest.so sub.o        参数：-shared 制作动态库 -o：重命名生成的新文件
+gfortran -shared -o libMyTest.so sub.o
+mkdir lib
+mv libMyTest.so ./lib
+nm ./lib/libMyTest.so         查看库中包含的函数等信息
+```
+
+**第三步：使用动态库**
+
+第一种方法：不成功！！！
+gcc + 源文件 + -L 动态库路径 + -l动态库名 + -I头文件目录 + -o 可执行文件名
+
+```bash
+gfortran main.f90 -L lib -lMyTest -o app
+./app
+```
+
+将lib文件夹添加到环境变量LD_LIBRARY_PATH中。
+
+```bash
+var=$(pwd)
+echo $var/lib
+export LD_LIBRARY_PATH=$var/lib:$LD_LIBRARY_PATH
+```
+
+执行后显示如下错误。
+
+```
+./app: error while loading shared libraries: libMyTest.so: cannot open shared object file: No such file or directory
+```
+
+（执行失败，找不到链接库，没有给动态链接器（ld-linux.so.2）指定好动态库 libmytest.so 的路径）
+
+
+
+第二种方法：成功！！！
+gcc + 源文件 + -I头文件 + libxxx.so + -o 可执行文件名
+
+```bash
+gfortran main.f90 lib/libMyTest.so -o app
+./app
+```
+
+（执行成功，已经指明了动态库的路径）
 
 
 
@@ -320,7 +539,7 @@ gfortran –o main main.o sub.o
 
 **main.f90**
 
-```
+```fortran
 program main
           implicit none
           interface 
@@ -366,7 +585,7 @@ end program main
 
 **sub.c**
 
-```
+```c
 #include <math.h>
 #include <stdio.h>
  
@@ -403,7 +622,7 @@ double FUNC_D(double var2d[3][2])
 
  **windows下：**
 
-```
+```bash
 icl -c sub.c -o sub.obj
 ifort -c main.f90 -o main.obj
 ifort main.obj sub.obj -o main.exe 
