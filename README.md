@@ -20,8 +20,8 @@
 
 - #### 静态库和动态库
 
-  - [由C语言生成库](C_build_lib_dll.md)
-  - [由Fortran生成](Fortran_build_library.md)
+  - ##### [由C语言生成库](C_build_lib_dll.md)
+  - ##### [由Fortran生成](Fortran_build_library.md)
 
 
 - #### [使用TetGen进行3D Delaunary网格划分](TetGen_3D_Delaunary_mesh.md)
@@ -31,13 +31,11 @@
 
 ## 重要的网络资源
 
-1. [Linux 命令大全 | 菜鸟教程 (runoob.com)](https://www.runoob.com/linux/linux-command-manual.html)
+- [Linux 命令大全 | 菜鸟教程 (runoob.com)](https://www.runoob.com/linux/linux-command-manual.html)
 
-2. [鳥哥的 Linux 私房菜](http://linux.vbird.org/)
+- [鳥哥的 Linux 私房菜](http://linux.vbird.org/)linux的操作都有，很全！！！
 
-   linux的操作都有，很全！！！
+- [鳥哥的 Linux 私房菜 -- 基礎學習篇](http://linux.vbird.org/linux_basic/)
 
-3. [鳥哥的 Linux 私房菜 -- 基礎學習篇](http://linux.vbird.org/linux_basic/)
-
-4. [FORTRAN & MATLAB 混合编程](https://www.cnblogs.com/momoko/p/6148013.html)
+- [FORTRAN & MATLAB 混合编程](https://www.cnblogs.com/momoko/p/6148013.html)
 
