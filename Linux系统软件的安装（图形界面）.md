@@ -1,5 +1,7 @@
 # Linux系统软件的安装（图形界面）
 
+作者：曹秋锋
+
 ## 一、概述
 
 实现环境：Redhat 6.7、Comsol 5.2a、Matlab R2018b
