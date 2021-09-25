@@ -2,6 +2,10 @@
 
 参考：**[C/C++/Fortran混合编程](https://www.cnblogs.com/xunxun1982/archive/2010/08/25/1808512.html)**
 
+[Standard Fortran and C Interoperability (intel.com)](https://software.intel.com/content/www/us/en/develop/documentation/fortran-compiler-oneapi-dev-guide-and-reference/top/compiler-reference/mixed-language-programming/standard-fortran-and-c-interoperability.html)
+
+[Mixed Language Programming (intel.com)](https://software.intel.com/content/www/us/en/develop/documentation/fortran-compiler-oneapi-dev-guide-and-reference/top/compiler-reference/mixed-language-programming.html)
+
 
 
 # 一、概述
@@ -110,16 +114,18 @@ real(c_double) function Function_Fortran(NumDouble)
 end function
 ```
 
+
+
 ### 2. 混合编程方式一
 
 分别生成二进制程序后，一起连接成可执行程序。
 
-#### windows下：
+#### （1）windows下：
 
 ```bash
-gcc –o main.o –c main.c
-gfortran –o sub.o –c sub.f90
-gcc –o main.exe main.o sub.o
+gcc –o main.obj –c main.c
+gfortran –o sub.obj –c sub.f90
+gcc –o main.exe main.obj sub.obj
 ```
 
 或者直接
@@ -128,13 +134,15 @@ gcc –o main.exe main.o sub.o
 gcc –o main.exe main.c sub.f90
 ```
 
-####  linux下：
+####  （2）linux下：
 
 ```bash
 gcc –o main.o –c main.c
 gfortran –o sub.o –c sub.f90
 gcc –o main main.o sub.o
 ```
+
+
 
 ### 3. 混合编程方式二
 
@@ -144,7 +152,7 @@ linux下，采用静态库和动态库的方式。
 
 
 
-#### 采用静态库
+#### （1）采用静态库
 
 **第一步：生成与位置无关的.o文件**
 
@@ -159,8 +167,8 @@ gfortran -o sub.o -c sub.f90
 ```bash
 ar rcs libMyTest.a sub.o        
 mkdir lib
-mv libMyTest.a ./lib         将静态库文件放置lib文件夹下
-nm ./lib/libMyTest.a         查看库中包含的函数等信息
+mv libMyTest.a ./lib         #将静态库文件放置lib文件夹下
+nm ./lib/libMyTest.a         #查看库中包含的函数等信息
 ```
 
 **第三步：使用静态库**
@@ -183,22 +191,22 @@ gcc main.c lib/libMyTest.a -o app
 
 
 
-#### 采用动态库
+#### （2）采用动态库
 
 **第一步：生成与位置无关的.o文件**
 
 ```bash
-gfortran -fPIC -o sub.o -c sub.f90   参数-fPIC表示生成与位置无关代码
+gfortran -fPIC -o sub.o -c sub.f90   #参数-fPIC表示生成与位置无关代码
 ```
 
 **第二步：创建动态库**
 
 ```bash
-gcc -shared -o libMyTest.so sub.o        参数：-shared 制作动态库 -o：重命名生成的新文件
+gcc -shared -o libMyTest.so sub.o    #参数：-shared 制作动态库 -o：重命名生成的新文件
 或 gfortran -shared -o libMyTest.so sub.o	
 mkdir lib
 mv libMyTest.so ./lib
-nm ./lib/libMyTest.so         查看库中包含的函数等信息
+nm ./lib/libMyTest.so         		#查看库中包含的函数等信息
 ```
 
 **第三步：使用动态库**
@@ -297,19 +305,19 @@ end function
 
 分别生成二进制程序后，一起连接成可执行程序。
 
-#### windows下：
+#### （1）windows下：
 
 **执行命令：**
 
 ```bash
 icl –o main.obj –c main.c
 ifort –c sub.f90  –o sub.obj 
-ifort main.obj sub.obj –o main.exe
+icl main.obj sub.obj –o main.exe
 ```
 
-#### **linux下：**
+#### （2）linux下：
 
-**一开始，没有成功。后来采用GNU版本中的main.c和sub.f90，就成功了。因为在linux下，即使采用intel编译器，子程序在定义时候和调用时，名字一定要一致。**
+**一开始，没有成功。后来采用GNU版本（在（一）1中的源程序）中的main.c和sub.f90，就成功了。因为在linux下，即使采用intel编译器，子程序在定义时候和调用时，名字一定要一致。**
 
 ```bash
 icc -c main.c -o main.o
@@ -332,7 +340,7 @@ main.c:(.text+0x4a): undefined reference to `FUNCTION_FORTRAN'
 
 采用静态库和动态库的方式。
 
-#### windows下：
+#### （1）windows下：
 
 windows下生成静态库lib和动态库dll文件：
 
@@ -348,9 +356,9 @@ ifort –c sub.f90  –o sub.dll
 **第一步：创建静态库**
 
 ```bash
-ifort –c sub.f90  –o sub.lib
+ifort –c sub.f90 –o sub.lib
 mkdir lib
-move libMyTest.lib ./lib         将静态库文件放置lib文件夹下
+move sub.lib ./lib         将静态库文件放置lib文件夹下
 ```
 
 **第二步：使用静态库**
@@ -378,10 +386,10 @@ main.exe
 **第一步：创建动态库**
 
 ```bash
-ifort –c sub.f90  –o sub.dll
+ifort –c sub.f90  –o sub.dll  	#不能采用 ifort /dll sub.f90  生成。
 mkdir lib
-move sub.dll ./lib         	#将静态库文件放置lib文件夹下
-nm ./lib/sub.dll         	#查看库中包含的函数等信息（windows中没法用）
+move sub.dll ./lib         		#将静态库文件放置lib文件夹下
+nm ./lib/sub.dll         		#查看库中包含的函数等信息（windows中没法用）
 ```
 
 **第二步：使用动态库**
@@ -408,9 +416,9 @@ main
 
 
 
-#### linux下：
+#### （2）linux下：
 
-**一开始，没有成功。后来采用GNU版本中的main.c和sub.f90，就成功了。因为在linux下，即使采用intel编译器，子程序在定义时候和调用时，名字一定要一致。**
+**一开始，没有成功。后来采用GNU版本中的main.c和sub.f90，就成功了。因为在linux下，即使采用intel编译器，子程序在定义时候和调用时，子程序的名字命名方式跟GNU版本的一样。**
 
 
 
@@ -433,7 +441,7 @@ mkdir lib
 mv libsub.a ./lib         #将静态库文件放置lib文件夹下
 ```
 
-**第三步：使用静态库**
+**第二步：使用静态库**
 
 第一种方法：成功！！！
 icl+ 源文件 + -L 静态库路径 + -l静态库名 + -I头文件目录 + -o 可执行文件名
@@ -592,12 +600,12 @@ double func_c_(double *n3)
 
 分别生成二进制程序后，一起连接成可执行程序。
 
-#### windows下：
+#### （1）windows下：
 
 ```bash
-gcc –o sub.o sub.c
-gfortran –o main.o main.f90
-gfortran –o main.exe main.o sub.o
+gcc –o sub.obj  sub.c
+gfortran –o main.obj main.f90
+gfortran –o main.exe main.obj sub.obj
 ```
 
 或是直接
@@ -606,7 +614,7 @@ gfortran –o main.exe main.o sub.o
 gfortran –o main.exe main.f90 sub.c
 ```
 
-####  linux下：
+####  （2）linux下：
 
 ```bash
 gcc –o sub.o sub.c
@@ -624,7 +632,7 @@ linux下，采用静态库和动态库的方式。
 
 
 
-##### 采用静态库
+#### （1）采用静态库
 
 **第一步：生成与位置无关的.o文件**
 
@@ -663,7 +671,7 @@ gfortran main.f90 lib/libMyTest.a -o app
 
 
 
-##### 采用动态库
+#### （2）采用动态库
 
 **第一步：生成与位置无关的.o文件**
 
@@ -807,7 +815,7 @@ double FUNC_D(double var2d[3][2])
 
 分别生成二进制程序后，一起连接成可执行程序。
 
-#### windows下：
+#### （1）windows下：
 
 ```
 icl -c sub.c -o sub.obj
@@ -815,7 +823,7 @@ ifort -c main.f90 -o main.obj
 ifort main.obj sub.obj -o main.exe 
 ```
 
-####  **linux下：**
+####  （2）linux下：
 
 **一开始，没有成功。后来采用GNU版本中的main.f90和sub.c，就成功了。因为在linux下，即使采用intel编译器，子程序在定义时候和调用时，名字一定要一致。**
 
@@ -842,7 +850,7 @@ main.f90:(.text+0x34c): undefined reference to `func_d_'
 
 采用静态库和动态库的方式。
 
-#### windows下：
+#### （1）windows下：
 
 windows下生成静态库lib和动态库dll文件：
 
@@ -857,7 +865,7 @@ windows下生成静态库lib和动态库dll文件：
 ```bash
 icl -LD sub.c -o sub.lib		#生成静态库sub.lib  -LD和/LD都行
 md lib
-move sub.lib ./lib         将静态库文件放置lib文件夹下
+move sub.lib ./lib         		#将静态库文件放置lib文件夹下
 ```
 
 出错：
@@ -890,7 +898,7 @@ move sub.lib ./lib         将静态库文件放置lib文件夹下
 
 **第二步：使用静态库**
 
-第一种方法：
+第一种方法：不成功，可能是选项没写对！！！
 ifort+ 源文件 + -L 静态库路径 + -l静态库名 + -I头文件目录 + -o 可执行文件名
 
 ```bash
@@ -898,8 +906,8 @@ ifort main.f90 -L lib -l sub.lib -o main.exe  #出错，参数不对
 main.exe
 ```
 
-第二种方法：
-icl+ 源文件 + -I头文件 + xxx.lib + -o 可执行文件名
+第二种方法：成功
+ifort+ 源文件 + -I头文件 + xxx.lib + -o 可执行文件名
 
 ```bash
 ifort main.f90 lib\sub.lib -o main.exe
@@ -918,28 +926,50 @@ main.exe
 icl -LD sub.c					#生成动态库sub.dll
 ```
 
+采用icl生成的dll，在后边ifort使用的时候出错：
+
+```
+lib\sub.dll : fatal error LNK1107: 文件无效或损坏: 无法在 0x320 处读取
+```
+
+
+
 **采用Microsoft C/C++编译器**
 
 1.用VC下的cl.exe  先将mylib.c  生成mylib.obj  中间文件
 
-```
+```bash
 cl.exe /c sub.c
 ```
 
 2.使用 link.exe 创建 \*.dll 文件
 
-```
-link -dll sub.obj
+```bash
+link -dll sub.obj				#采用这个方法生成的dll，使用的时候出错
 ```
 
+采用cl和link生成的dll，在后边ifort使用的时候出错：
+
 ```
+sub.dll : fatal error LNK1107: 文件无效或损坏: 无法在 0x2F0 处读取
+```
+
+3.使用 lib.exe 创建 \*.dll 文件
+
+```bash
+lib.exe /OUT:sub.dll sub.obj	#这个方式有效
+```
+
+然后，移动dll到lib文件夹下
+
+```bash
 md lib
-move sub.dll ./lib         将动态库文件放置lib文件夹下
+move sub.dll ./lib         		#将动态库文件放置lib文件夹下
 ```
 
 
 
-**第二步：使用动态库**   都不成功，需要再研究一下。
+**第二步：使用动态库**
 
 **第一种方法**：
 
@@ -951,32 +981,21 @@ ifort main.f90 -L lib -l sub.dll -o main.exe  #出错
 main
 ```
 
-**第二种方法**：
+**第二种方法**：成功
 ifort+ 源文件 + -I头文件 + xxx.dll + -o 可执行文件名
 
 ```bash
-ifort main.f90 sub.dll -o main.exe
-或
-link main.obj sub.dll /OUT:main.exe
-```
-
-采用icl生成的dll，出错：
-
-```
-lib\sub.dll : fatal error LNK1107: 文件无效或损坏: 无法在 0x320 处读取
-```
-
-采用cl和ling生成的dll，出错：
-
-```
-sub.dll : fatal error LNK1107: 文件无效或损坏: 无法在 0x2F0 处读取
+ifort main.f90 lib/sub.dll -o main.exe
+#或
+ifort -c main.f90
+link main.obj lib/sub.dll /OUT:main.exe /SUBSYSTEM:CONSOLE
 ```
 
 
 
-#### linux下：
+#### （2）linux下：
 
-**一开始，没有成功。后来采用GNU版本中的main.f90和sub.c，就成功了。因为在linux下，即使采用intel编译器，子程序在定义时候和调用时，名字一定要一致。**
+**一开始，没有成功。后来采用GNU版本中的main.f90和sub.c，就成功了。因为在linux下，即使采用intel编译器，子程序在定义时候和调用时，子程序的名字命名方式跟GNU版本的一样。**
 
 
 
@@ -1050,7 +1069,8 @@ ifort main.f90 -L lib -lsub -o app
 var=$(pwd)
 echo $var/lib
 export LD_LIBRARY_PATH=$var/lib:$LD_LIBRARY_PATH
-或 export LD_LIBRARY_PATH=/root/CFortran/GNU_VER/Fortran_call_C/lib:$LD_LIBRARY_PATH
+#或 
+export LD_LIBRARY_PATH=/root/CFortran/GNU_VER/Fortran_call_C/lib:$LD_LIBRARY_PATH
 ```
 
 执行
@@ -1069,7 +1089,7 @@ ifort main.f90 lib/libsub.so -o app
 
 也需要将lib文件夹添加到环境变量LD_LIBRARY_PATH中。
 
-# 
+ 
 
 # 参考文章：
 
