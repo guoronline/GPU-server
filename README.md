@@ -1,5 +1,7 @@
 ## GPU server 操作笔记
 
+- #### [Linux命令手册](Linux命令手册.md)
+
 - #### [一些Linux基本命令](Linux_command.md)
 
 - #### [远程桌面登录](vcn_logon_server.md)
