@@ -38,8 +38,6 @@
 version 1.1							# 版本说明 1.1版开始添加
 Solution type						# 1.1版开始添加
     1                       		# 求解类型；
-Solution CPU cores                  # 1.2版本开始，增加计算核数控制
-    4 
 CONTROL PARAMETER
     9                        		#模型节点总数 
     4,    4,     1,    1      		#1.模型单元总数；2.最大边数；3.材料类型总数；4.边界条件总数。
@@ -59,23 +57,34 @@ CONTROL PARAMETER
 
 1.1版本后变为五参数。
 
-1.IFLAG_REC：是否考虑互作用应力项；
+```bash
+OPTION
+1.互作用应力项, 2.带宽优化, 3.宏观模量, 4.数据读取类型, 5.TERM参数  
+```
 
-2.IFLAG_BANDWIDTH_OPTIMIZING：是否带宽优化;
+###### 1. IFLAG_REC：是否考虑互作用应力项；
 
-3.IFLAG_homogen:控制是否计算复合材料宏观模量;
+- IFLAG_REC==0         夹杂和基体都不考虑互作用项
+- IFLAG_REC==1         夹杂不考虑互作用项,基体考虑互作用项。  11标识考虑相邻单元的夹杂
+- IFLAG_REC==2         夹杂和基体都考虑互作用项。                      12标识考虑相邻单元的夹杂
+- IFLAG_REC==3         !夹杂考虑互作用项,基体不考虑互作用项。 13标识考虑相邻单元的夹杂
 
-4.Inclusion_data_real_type:夹杂数据读取类型;
+###### 2. IFLAG_BANDWIDTH_OPTIMIZING：是否带宽优化;
 
-Inclusion_data_real_type =0 时，读取夹杂中心坐标、夹杂A、B轴和夹角（只能算**夹杂单元和普通单元**）
+###### 3. IFLAG_homogen：控制是否计算复合材料宏观模量;
 
-Inclusion_data_real_type =1 时，读取夹杂中心坐标、内部节点数和节点坐标（只能算**夹杂单元和普通单元**）
+###### 4. Inclusion_data_real_type：夹杂数据读取类型;
 
-Inclusion_data_real_type =2 时，读取多材料的界面节点数和节点坐标（只能算**多相材料单元和普通单元**）
+- Inclusion_data_real_type =0 时，读取夹杂中心坐标、夹杂A、B轴和夹角（只能算**夹杂单元和普通单元**）
 
-Inclusion_data_real_type =3 时，每个单元根据读夹杂信息时读入的第二位参数，决定后边的读取方式和内容，这样，可以实现**多种单元**的混合计算。
+- Inclusion_data_real_type =1 时，读取夹杂中心坐标、内部节点数和节点坐标（只能算**夹杂单元和普通单元**）
 
- 5.IFLAG_GET_TERM:是否手动输入GET_TERM里面的各种参数    
+- Inclusion_data_real_type =2 时，读取多材料的界面节点数和节点坐标（只能算**多相材料单元和普通单元**）
+
+- Inclusion_data_real_type =3 时，每个单元根据读夹杂信息时读入的第二位参数，决定后边的读取方式和内容，这样，可以实现**多种单元**的混合计算。
+
+
+###### 5. IFLAG_GET_TERM：是否手动输入GET_TERM里面的各种参数    
 
 
 
