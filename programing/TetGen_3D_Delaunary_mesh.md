@@ -8,11 +8,11 @@
 
 下载位置：https://www.paraview.org/download/
 
-![img](./images/clip_image002.png)
+![img](../images/clip_image002.png)
 
-下载Windows版本，解压后可以直接执行
+下载Windows版本，解压后可以直接执行文件夹里的
 
-.\ParaView-5.9.0-Windows-Python3.8-msvc2017-64bit\bin\文件夹里的paraview.exe
+.\ParaView-5.9.0-Windows-Python3.8-msvc2017-64bit\bin\paraview.exe
 
 操作指南：[ParaView Documentation 5.8.1 documentation](https://docs.paraview.org/en/latest/)
 
@@ -179,7 +179,7 @@ tetgen -pq1.2V –k example.poly
 
  
 
-![img](./images/clip_image004.png)
+![img](../images/clip_image004.png)
 
  
 
@@ -243,7 +243,7 @@ tetgen -pg example.poly
 
 首先打开**blender**，Add->Mesh->Torus,添加一个圆环，然后File->Export->Stanford(.ply)，导出ply文件，待会用于剖分。
 
-![https://img-blog.csdn.net/20130829103721000?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvc2lsYW5ncXVhbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast](./images/clip_image006.jpg)
+![https://img-blog.csdn.net/20130829103721000?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvc2lsYW5ncXVhbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast](../images/clip_image006.jpg)
 
  
 
@@ -254,7 +254,7 @@ tetgen -pg example.poly
 ```
 
 
- ![https://img-blog.csdn.net/20130829104252171?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvc2lsYW5ncXVhbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast](./images/clip_image008.jpg)
+ ![https://img-blog.csdn.net/20130829104252171?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvc2lsYW5ncXVhbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast](../images/clip_image008.jpg)
 
   
 
