@@ -2,7 +2,7 @@
 
 VisualStudio是微软公司推出的开发环境。是目前最流行的Windows平台应用程序开发环境。Intel Visual Fortran是使用fortran编程的编译工具。它们之间的兼容性如下：
 
-![img](./images/vs_ivf.jpg)
+![img](../images/vs_ivf.jpg)
 
 
 
