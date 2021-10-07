@@ -4,40 +4,46 @@
 
 
 
-## GPU server 操作笔记
+## GPU server 操作
 
-- ##### [Linux命令手册](Linux命令手册.md)
+- ##### [Linux命令手册](GPU_server/Linux命令手册.md)
 
-- ##### [一些Linux基本命令](Linux_command.md)
+- ##### [一些Linux基本命令](GPU_server/Linux_command.md)
 
-- ##### [远程桌面登录](vcn_logon_server.md)
+- ##### [远程桌面登录](GPU_server/vcn_logon_server.md)
 
-- ##### [linux系统下FORTRAN 和 C 的编译器](Fortran_C_compilers.md)
+- ##### [linux系统下FORTRAN 和 C 的编译器](GPU_server/Fortran_C_compilers.md)
+
+- ##### [Linux系统软件的安装（图形界面）--曹秋锋](GPU_server/Linux系统软件的安装（图形界面）.md)
+
+- ##### [OpenCV](GPU_server/opencv.md)
 
 
 
-## 编程相关问题
+## 编程相关
 
-- ##### [vs和fortran的兼容问题](vs_ivf_compatibility.md)
+- ##### [vs和fortran的兼容问题](programing/vs_ivf_compatibility.md)
 
 - ##### C/C++/Fortran混合编程
 
-  - ##### 	 [命令行形式](Mixed_FORTRAN_C_programing.md)
+  - ##### 	 [命令行形式](programing/Mixed_FORTRAN_C_programing.md)
 
-  - ##### 	[用VS和IVF](Mixed_FORTRAN_C_programing(VS).md)
+  - ##### 	[用VS和IVF](programing/Mixed_FORTRAN_C_programing(VS).md)
 
 - ##### 静态库和动态库
 
-  - ##### [由C语言生成库](C_build_lib_dll.md)
-  - ##### [由Fortran生成](Fortran_build_library.md)
+  - ##### [由C语言生成库](programing/C_build_lib_dll.md)
+  - ##### [由Fortran生成](programing/Fortran_build_library.md)
 
 
-- ##### [使用TetGen进行3D Delaunary网格划分](TetGen_3D_Delaunary_mesh.md)
+- ##### [使用TetGen进行3D Delaunary网格划分](programing/TetGen_3D_Delaunary_mesh.md)
+
+- ##### [计算几何笔记](programing/计算几何笔记.md)
 
 
 
 
-## 重要的网络资源
+## 网络资源
 
 - [Linux 命令大全 | 菜鸟教程 (runoob.com)](https://www.runoob.com/linux/linux-command-manual.html)
 
