@@ -67,15 +67,15 @@ lib.exe /OUT:FcallC.lib csource.obj
 
 打开VS2015，建立一个win32控制台程序，空项目。
 
-![image-20210908013453750](./images/image-20210908013453750.png)
+![image-20210908013453750](../images/image-20210908013453750.png)
 
 然后打开项目--LibTest属性(如图1)，打开LibTest属性页(如图2)，在右边配置类型处选择静态库(lib)。生成的解决方案平台设置为x64。将准备好的源程序文件csource.cpp添加到项目中。
 
- ![image-20210908013511485](./images/image-20210908013511485.png)
+ ![image-20210908013511485](../images/image-20210908013511485.png)
 
 打开LibTest属性页，在右边配置类型处选择静态库(lib)，目标文件名设置为FcallC。
 
- ![image-20210908013520979](./images/image-20210908013520979.png)
+ ![image-20210908013520979](../images/image-20210908013520979.png)
 
 Build后生成FcallC.lib。
 
@@ -85,7 +85,7 @@ Build后生成FcallC.lib。
 
 配置Fortran工程属性
 
- ![image-20210908013636685](./images/image-20210908013636685.png)
+ ![image-20210908013636685](../images/image-20210908013636685.png)
 
 生成Fortran源程序文件Console1.F90。
 
@@ -192,7 +192,7 @@ ifort –c sub.f90  –o sub.lib
 
 打开VS2015，建立一个Intel Visual Fortran的静态库项目程序。
 
- ![image-20210908014152829](./images/image-20210908014152829.png)
+ ![image-20210908014152829](../images/image-20210908014152829.png)
 
 将准备好的源程序文件sub.f90添加到项目中。生成的解决方案平台设置为x64。运行生成sub.lib。
 
@@ -200,7 +200,7 @@ ifort –c sub.f90  –o sub.lib
 
 打开VS2015，建立一个win32控制台程序，空项目。
 
-![image-20210908014226674](./images/image-20210908014226674.png)
+![image-20210908014226674](../images/image-20210908014226674.png)
 
 生成的解决方案平台设置为x64。
 
@@ -271,7 +271,7 @@ C:\Program Files (x86)\IntelSWTools\compilers_and_libraries\windows\compiler\lib
 
 ;C:\Program Files (x86)\IntelSWTools\compilers_and_libraries\windows\compiler\lib\intel64\
 
-![image-20210908014506644](./images/image-20210908014506644.png) 
+![image-20210908014506644](../images/image-20210908014506644.png) 
 
 最后问题得到解决。
 
