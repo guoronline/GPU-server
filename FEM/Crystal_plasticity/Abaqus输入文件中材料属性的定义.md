@@ -197,7 +197,7 @@ eight constants each line (data card)
 
 ##### 率相关的晶体材料硬化理论
 
-![image-20211017020342113](..\..\images\hardening2.png)
+![image-20211017020342113](../../images/hardening2.png)
 
 
 
@@ -238,17 +238,17 @@ gammadot = adot * ( tau / g ) ** n
 
 ##### 强度的演化
 
-![image-20211017013943178](..\..\images\hardening.png)
+![image-20211017013943178](../../images/hardening.png)
 
 ##### 自、潜硬化模量的确定
 
 ###### 确定方式一：
 
-![image-20211017014515002](..\..\images\hardening0.png)
+![image-20211017014515002](../../images/hardening0.png)
 
 ###### 确定方式二：
 
-![image-20211017015444894](..\..\images\hardening1.png)
+![image-20211017015444894](../../images/hardening1.png)
 
 ##### 参数：
 
