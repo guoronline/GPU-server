@@ -197,7 +197,7 @@ eight constants each line (data card)
 
 ##### 率相关的晶体材料硬化理论
 
-![image-20211017020342113](../../images/hardening2.png)
+<img src="../../images/hardening2.png" alt="image-20211017020342113"  width="80%"  />
 
 
 
@@ -238,17 +238,17 @@ gammadot = adot * ( tau / g ) ** n
 
 ##### 强度的演化
 
-![image-20211017013943178](../../images/hardening.png)
+<img src="../../images/hardening.png" alt="image-20211017013943178"  width="80%"  />
 
 ##### 自、潜硬化模量的确定
 
 ###### 确定方式一：
 
-![image-20211017014515002](../../images/hardening0.png)
+<img src="../../images/hardening0.png" alt="image-20211017014515002" width="80%" />
 
 ###### 确定方式二：
 
-![image-20211017015444894](../../images/hardening1.png)
+<img src="../../images/hardening1.png" alt="image-20211017015444894"  width="80%" />
 
 ##### 参数：
 
@@ -296,7 +296,7 @@ Users who want to use their own self-hardening law may change the function subpr
 
 ##### 向前梯度时间积分方案
 
-![image-20211017001859275](E:\OneDrive\文档\GPU-server\images\integration_parameter.png)
+<img src="../../images/integration_parameter.png" alt="image-20211017001859275"  width="80%" />
 
 ##### 参数：
 
