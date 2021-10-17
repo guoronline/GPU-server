@@ -2,6 +2,8 @@
 
 
 
+[子程序(UMAT)基本操作过程](https://wenku.baidu.com/view/6d7a5ec52cc58bd63186bd11.html)
+
 ## 一、为单元指定材料
 
 ### 关键字：*SOLID SECTION
