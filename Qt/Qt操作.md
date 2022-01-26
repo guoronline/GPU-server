@@ -6,6 +6,14 @@
 
 [Qt汇总](https://www.cnblogs.com/luoxiang/p/13533422.html)
 
+[代碼示例](https://vimsky.com/zh-tw/examples/)
+
+
+
+# [ C++](https://blog.csdn.net/qq_41854911/category_11192253.html)
+
+
+
 ## QVector容器内元素排序和去重简单用法
 
 参考：
@@ -97,6 +105,18 @@ C:\Windows\System32\TextInputFramework.dll  （微软新一代输入法框架）
 
 
 
+## Event.RESIZE事件
+
+[窗口大小改变触发Event.RESIZE事件](https://www.cnblogs.com/602147629/archive/2010/12/27/1918221.html)
+
+`stage.addEventListener(Event.RESIZE, resizeHandler);`
+
+## connect函数
+
+[connect函数的几种写法](https://blog.csdn.net/wang15877/article/details/106361993?spm=1001.2101.3001.6650.3&utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7Edefault-3.fixedcolumn&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7Edefault-3.fixedcolumn)
+
+[(13条消息) Qt connect信号连接的几种写法_luoyayun361的专栏-CSDN博客_qt中的connect信号触发](https://blog.csdn.net/luoyayun361/article/details/80768567)
+
 # Qt界面
 
 [Qt界面外观之一：Qt风格与特殊效果窗体](https://www.cnblogs.com/linuxAndMcu/p/10133983.html)
@@ -109,7 +129,7 @@ C:\Windows\System32\TextInputFramework.dll  （微软新一代输入法框架）
 
 [QT之QMainWindow窗体应用 - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/52507776)
 
-
+[窗口大小、位置及其大小改变引起的事件QResizeEvent](https://blog.csdn.net/humanking7/article/details/86108269?spm=1001.2101.3001.6650.1&utm_medium=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~default-1.highlightwordscore&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~default-1.highlightwordscore)
 
 ## QToolBar
 
