@@ -1,0 +1,41 @@
+.bd{
+	background-color: rgba(0,0,0,.05);
+	/* background-color: red; */
+	/* margin: 0;padding: 0; */
+}
+.main{
+	width: 100%;
+	height: 920px;
+	/* background-color: #549EFF; */
+}
+ul {
+	    padding-inline-start: 0px;
+		height: 12.5rem;
+		
+}
+li {
+	
+	list-style: none;
+	width: 46%;
+	height: 3.125rem;
+	background-color: rgba(250, 250, 250);
+	border-radius: 0.125rem;
+	/* margin: 0.3125rem 0; */
+	margin: 0.3125rem 2%;
+	text-align: center;
+	line-height: 3.125rem;
+	float: left;
+	font-size: 1.25rem;
+}
+a {
+	font-size: 1.25rem;
+	text-decoration: none;
+	/* padding-left: 0.625rem; */
+}
+a:link {
+	color: #000000;
+}
+
+a:visited {
+	color: #000000;
+}
