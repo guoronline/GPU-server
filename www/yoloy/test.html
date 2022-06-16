@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>功能测试页面</title>
+	</head>
+
+	<!-- 
+ 超链接空标签模板
+ <a href=""></a> 
+ 换行标签
+ <br>
+ style=""
+ <div></div> <p></p>
+-->
+
+	<body style="background-color: rgba(0,0,0,.05);">
+		<div style="margin: 0 auto;width: 720px; height: 900px;padding-bottom: 100px;background-color: ;">
+			<h1 style="text-align: center;padding-bottom: 30px;">功能测试页面</h1>
+			
+			<style type="text/css">
+				a:link {
+					color: #000000;
+				}
+			
+				a:visited {
+					color: #000000;
+				}
+			
+				a {
+					text-decoration: none;
+					padding-left: 10px;
+				}
+			
+				li {
+					
+					list-style: none;
+					width: 500px;
+					
+			
+				}
+				.xt{
+					width: 100px;height: 32px;
+					
+					
+				}
+				.xt li{
+					display: none;
+				}
+				.xt:hover li{display: block;}
+			</style>
+			
+			
+			<!--中下部第5块-->
+			<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js">
+			</script>
+			<script>
+			$(document).ready(function(){
+			  $(".an").click(function(){
+				 $(".a-p2").hide();$(".a-p3").hide();
+			    $(".a-p").toggle();
+			  });
+			});
+			$(document).ready(function(){
+			  $(".an2").click(function(){
+				$(".a-p").hide();$(".a-p3").hide();
+			    $(".a-p2").toggle();
+			  });
+			});
+			$(document).ready(function(){
+			  $(".an3").click(function(){
+				$(".a-p").hide();
+				$(".a-p2").hide();
+			    $(".a-p3").toggle();
+			  });
+			});
+			</script>
+			<div style="width: 1100px; height: 600px;padding-top: 10px;padding-left: 20px;background-color: ;">
+				<style type="text/css">
+					body {
+					  margin: 0;
+					  min-width: 250px;
+					}
+					
+					/* Include the padding and border in an element's total width and height */
+					* {
+					  box-sizing: border-box;
+					}
+					
+					/* Remove margins and padding from the list */
+					ul {
+					  margin: 0;
+					  padding: 0;
+					}
+					
+					/* Style the list items */
+					ul li {
+					  cursor: pointer;
+					  position: relative;
+					  padding: 12px 8px 12px 40px;
+					  background: #eee;
+					  font-size: 18px;
+					  transition: 0.2s;
+					  
+					  /* make the list items unselectable */
+					  -webkit-user-select: none;
+					  -moz-user-select: none;
+					  -ms-user-select: none;
+					  user-select: none;
+					}
+					
+					/* Set all odd list items to a different color (zebra-stripes) */
+					ul li:nth-child(odd) {
+					  background: #f9f9f9;
+					}
+					
+					/* Darker background-color on hover */
+					ul li:hover {
+					  background: #ddd;
+					}
+					
+					/* When clicked on, add a background color and strike out text */
+					ul li.checked {
+					  background: #888;
+					  color: #fff;
+					  text-decoration: line-through;
+					}
+					
+					/* Add a "checked" mark when clicked on */
+					ul li.checked::before {
+					  content: '';
+					  position: absolute;
+					  border-color: #fff;
+					  border-style: solid;
+					  border-width: 0 2px 2px 0;
+					  top: 10px;
+					  left: 16px;
+					  transform: rotate(45deg);
+					  height: 15px;
+					  width: 7px;
+					}
+					
+					/* Style the close button */
+					.close {
+					  position: absolute;
+					  right: 0;
+					  top: 0;
+					  padding: 12px 16px 12px 16px;
+					}
+					
+					.close:hover {
+					  background-color: #f44336;
+					  color: white;
+					}
+					
+					/* Style the header */
+					.header {
+					  background-color: #f44336;
+					  padding: 30px 40px;
+					  color: white;
+					  text-align: center;
+					}
+					
+					/* Clear floats after the header */
+					.header:after {
+					  content: "";
+					  display: table;
+					  clear: both;
+					}
+					
+					/* Style the input */
+					input {
+					  border: none;
+					  width: 75%;
+					  padding: 10px;
+					  float: left;
+					  font-size: 16px;
+					}
+					
+					/* Style the "Add" button */
+					.addBtn {
+					  padding: 10px;
+					  width: 25%;
+					  background: #d9d9d9;
+					  color: #555;
+					  float: left;
+					  text-align: center;
+					  font-size: 16px;
+					  cursor: pointer;
+					  transition: 0.3s;
+					}
+					
+					.addBtn:hover {
+					  background-color: #bbb;
+					}
+				</style>
+				
+				<div id="" style="width: 500px;height: 600px;margin-left: 100px;background-color: ;">
+					<div id="myDIV" class="header" style="width: 500px;" >
+					  <h2 style="margin:5px">My To Do List</h2>
+					  <input type="text" id="myInput" onkeydown="newElement2()" placeholder="待办...">
+					  <span onclick="newElement()"  class="addBtn" style="height: 38px;">添加待办</span>
+					</div>
+					
+					<ul id="myUL" style="width: 500px;">
+					  <li>待办</li>
+					  <li class="checked">已完成</li>
+					  
+					</ul>
+					<script type="text/javascript">
+						// Create a "close" button and append it to each list item
+						var myNodelist = document.getElementsByTagName("LI");
+						var i;
+						for (i = 0; i < myNodelist.length; i++) {
+						  var span = document.createElement("SPAN");
+						  var txt = document.createTextNode("\u00D7");
+						  span.className = "close";
+						  span.appendChild(txt);
+						  myNodelist[i].appendChild(span);
+						}
+						
+						// Click on a close button to hide the current list item
+						var close = document.getElementsByClassName("close");
+						var i;
+						for (i = 0; i < close.length; i++) {
+						  close[i].onclick = function() {
+						    var div = this.parentElement;
+						    div.style.display = "none";
+						  }
+						}
+						
+						// Add a "checked" symbol when clicking on a list item
+						var list = document.getElementById('myUL');
+						list.addEventListener('click', function(ev) {
+						  if (ev.target.tagName === 'LI') {
+						    ev.target.classList.toggle('checked');
+						  }
+						}, false);
+						
+						// Create a new list item when clicking on the "Add" button
+						function newElement() {
+						  var li = document.createElement("li");
+						  var inputValue = document.getElementById("myInput").value;
+						  var t = document.createTextNode(inputValue);
+						  li.appendChild(t);
+						  if (inputValue === '') {
+						    alert("请输入待办事项!");
+						  } else {
+						    document.getElementById("myUL").appendChild(li);
+						  }
+						  document.getElementById("myInput").value = "";
+						
+						  var span = document.createElement("SPAN");
+						  var txt = document.createTextNode("\u00D7");
+						  span.className = "close";
+						  span.appendChild(txt);
+						  li.appendChild(span);
+						
+						  for (i = 0; i < close.length; i++) {
+						    close[i].onclick = function() {
+						      var div = this.parentElement;
+						      div.style.display = "none";
+						    }
+						  }
+						}
+						function newElement2() {
+							 if (event.keyCode == 13)
+							{
+							   
+								  var li = document.createElement("li");
+								  var inputValue = document.getElementById("myInput").value;
+								  var t = document.createTextNode(inputValue);
+								  li.appendChild(t);
+								  if (inputValue === '') {
+									alert("You must write something!");
+								  } else {
+									document.getElementById("myUL").appendChild(li);
+								  }
+								  document.getElementById("myInput").value = "";
+								
+								  var span = document.createElement("SPAN");
+								  var txt = document.createTextNode("\u00D7");
+								  span.className = "close";
+								  span.appendChild(txt);
+								  li.appendChild(span);
+								
+								  for (i = 0; i < close.length; i++) {
+									close[i].onclick = function() {
+									  var div = this.parentElement;
+									  div.style.display = "none";
+									}
+								  }
+								}
+						}
+					</script>
+				</div>
+				
+				<div style="width: 300px; height: 100px;float: left;background-color: ;">
+			
+					<div style="background-color: ;width: 220px;">
+						<a style="font-size: 20px;font-weight: ;">1.悬停测试</a>
+					</div>
+					
+					<ul style="padding-inline-start: 0px;background-color: ;">
+						<div class="xt">
+							<p style="font-size: 18px;padding-top: 5px;padding-left: 10px;background-color: rgba(250, 250, 250);width: 100px;height: 30px;margin-bottom: 0px;">鼠标悬停</p>
+							<li style="width: 200px;height: 30px;float: left;margin-right: 10px;"><a target="_blank" href="https://www.52pojie.cn/thread-1572162-1-1.html">mysql初学者速查手册</a></li>
+							
+						</div>
+						
+					</ul>
+					
+					
+					
+				</div>
+				
+				<div class="" style="width: 300px;height: 300px;margin-top: 50px;">
+						<div style="background-color: ;width: 200px;">
+							<a style="font-size: 20px;font-weight: ;">2.按钮测试</a>
+						</div>
+						<!-- <button class="an" style="font-size: 16px;width: 150px;height: 40px;margin-top: 20px;display: block;float: left;border: none;border-radius: 2px;background-color: rgba(250, 250, 250);">点击展开>></button> -->
+<!-- 						<button class="an" style="font-size: 16px;width: 150px;height: 40px;margin-top: 20px;display: block;float: left;border: none;border-radius: 2px;background-color: rgba(250, 250, 250);">点击展开>></button>
+ -->						
+						<div style="width: 160px;height: 200px;background-color: ;margin-top: 10px;float: left;">
+							<button type="button" class="an" style="font-size: 16px;width: 160px;height: 40px;margin-top: 10px;display: block;float: left;border: none;border-radius: 2px;background-color: rgba(250, 250, 250);">1.开机异常|黑屏</button>
+							<button type="button" class="an2" style="font-size: 16px;width: 160px;height: 40px;margin-top: 10px;display: block;float: left;border: none;border-radius: 2px;background-color: rgba(250, 250, 250);">2.开机后黑屏、蓝屏</button>
+							<button type="button" class="an3" style="font-size: 16px;width: 160px;height: 40px;margin-top: 10px;display: block;float: left;border: none;border-radius: 2px;background-color: rgba(250, 250, 250);">3.中标麒麟改密码</button>
+						</div>
+						<div style="float: left;">
+							<p class="a-p" style="display: none;font-size: 16px;float: left;width: 250px;height: 200px;padding-top: 10px;padding-left: 10px;margin-top: 20px;margin-left: 10px;background-color: rgba(250, 250, 250);
+					border-radius: 2px;">1.检测电源线路<br>2.清理内存条灰尘</p>
+							<p class="a-p2" style="display: none;font-size: 16px;width: 250px;height: 200px;padding-top: 10px;padding-left: 10px;margin-top: 20px;margin-left: 10px;background-color: rgba(250, 250, 250);
+							border-radius: 2px;">1.查询蓝屏代码</p>
+							<p class="a-p3" style="display: none;font-size: 16px;width: 250px;height: 200px;padding-top: 10px;padding-left: 10px;margin-top: 20px;margin-left: 10px;background-color: rgba(250, 250, 250);
+							border-radius: 2px;">1.开机F10 <br>2.更改配置文件<br>3.重启电脑</p>
+						</div>
+						
+							
+				
+					</div>
+					<div style="width: 700px;height: 400px;background-color: ;">
+						<h3>
+							3.展示页面测试
+						</h3>
+						<div style="text-align: center;width: 400px;height: 280px;background-color: ;border: none;border-radius: 5px;background-color: rgba(250, 250, 250);padding: 10px;">
+							<img src="1.jpg" style="">
+							<span style="color: dimgrey;">维护事项排行表</span>
+						</div>
+						
+					</div>
+					
+	
+				
+			</div>
+			
+	
+		</div>
+
+	</body>
+
+</html>
