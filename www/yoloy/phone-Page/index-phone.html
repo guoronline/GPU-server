@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		 <meta content="width=device-width,user-scalable=no" name="viewport">
+		<title>超实用导航页</title>
+	<link rel="stylesheet" type="text/css" href="index-phone.css"/>
+	
+	
+	</head>
+
+	<!-- 
+ 超链接空标签模板
+ <a href=""></a> 
+ 换行标签
+ <br>
+ style=""
+ <div></div> <p></p>
+-->
+	<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js">
+	</script>
+	<style type="text/css">
+		.sidenav {
+		    height: 100%;
+		    width: 0;
+		    position: fixed;
+		    /* z-index: 1; */
+		    top: 0;
+		    left: 0;
+		    background-color: #111;
+		    overflow-x: hidden;
+		    transition: 0.5s;
+		    /* padding-top: 60px; */
+		}
+		
+		.sidenav a {
+		    padding: 8px 8px 8px 32px;
+		    text-decoration: none;
+		    font-size: 25px;
+		    color: #818181;
+		    display: block;
+		    transition: 0.3s;
+		}
+		
+		.sidenav a:hover, .offcanvas a:focus{
+		    color: #f1f1f1;
+		}
+		
+		.sidenav .closebtn {
+		    position: absolute;
+		    top: 0;
+		    right: 25px;
+		    font-size: 36px;
+		    margin-left: 50px;
+		}
+		
+		
+		
+		/* @media screen and (max-height: 450px) {
+		  .sidenav {padding-top: 15px;}
+		  .sidenav a {font-size: 18px;}
+		} */
+	</style>
+	<style type="text/css">
+	    .container {
+	            width: ;
+	            height: 220px;
+				background-color: rgba(250, 250, 250);
+	            margin: 0 auto;
+				
+				border: 1px solid #fff;border-radius: 3px;
+	        }
+	        .parent {
+	            width: 100%;
+	            height: 42px;
+	            top: 4px;
+	            /* position: relative; */
+				margin-bottom: 20px;
+	        }
+	        .tx1 {
+	            /*输入框高度设置为40px, border占据2px，总高度为42px*/
+	            width: 310px;
+	            height: 30px;
+	            border: 2px solid #dcdcdc;border-radius: 7px;
+	            font-size: 16px;
+	            outline: none;
+	        }
+	        /* .parent>input:first-of-type:focus {
+	            border: 1px solid #317ef3;
+	            padding-left: 10px;
+	        } */
+	       .btn {
+	            /*button按钮border并不占据外围大小，设置高度42px*/
+	            width: 68px;
+	            height: 30px;
+				margin-top: 5px;
+				margin-left: 3px;
+	            /* position: absolute; */
+	            background: #549eff;
+	            border: 1px solid #fff;border-radius: 2px;
+	            color: #FFFFFF;font-weight: bold;
+	            font-size: 16px;
+	            outline: none;
+	        }
+			.btn:hover {
+			     /*button按钮border并不占据外围大小，设置高度42px*/
+			    cursor: pointer;
+			 }
+			.btn2 {
+			     /*button按钮border并不占据外围大小，设置高度42px*/
+			     width: 96px;
+			     height: 30px;
+							margin-top: 5px;
+							margin-left: 3px;
+			     /* position: absolute; */
+			     background: #549eff;
+			     border: 1px solid #fff;border-radius: 2px;
+			     color: #FFFFFF;font-weight: bold;
+			     font-size: 16px;text-align: center;
+			     outline: none;
+			 }
+			 .btn2:hover {
+			      /*button按钮border并不占据外围大小，设置高度42px*/
+			      
+				  cursor: pointer;
+			  }
+			
+			
+	
+	</style>
+	<script type="text/javascript">
+		function openNav() {
+				
+			// document.getElementById("home").style.backgroundColor = "red";
+			document.getElementById("mySidenav").style.left = "0%";
+			document.getElementById("mySidenav2").style.width = "40%";
+			document.getElementById("mySidenav2").style.marginLeft = "60%";
+			// document.getElementById("hh1").style.filter = "blur(1px)";
+		}
+		
+		function closeNav() {
+			
+			// document.getElementById("home").style.backgroundColor = "wheat";
+			document.getElementById("mySidenav").style.left = "-72%";
+			document.getElementById("mySidenav2").style.width = "-40%";
+			document.getElementById("mySidenav2").style.marginLeft = "-60%";
+			// document.getElementById("hh1").style.filter = "blur(0px)";
+		}
+		// $(document).ready(function(){
+		//   $(".celan").click(function(){
+		//     $("#mySidenav").animate({
+		//       width:'toggle'
+		//     });
+		//   });
+		// });
+		// $(document).ready(function(){
+		//   $("button").click(function(){
+		//     var div=$("div");
+		//     div.animate({opacity:'0.4'},"slow");
+		
+		//   });
+		// });
+	</script>
+	<script>
+	$(document).ready(function(){
+			//当点击（聚合导航）class为an的按钮时，滑出聚合搜索块（class为con2）
+		  $(".an").click(function(){
+			 // $(".c2-cent").toggle();$(".update").toggle();$(".main-h1").toggle();$(".con").toggle();
+		    $(".con2").slideToggle();
+			 // $(".con").animate({
+			 //       width:'toggle'
+			 //     });
+		  });
+		  // var div=$("div");
+		  //     div.animate({height:'300px',opacity:'0.4'},"slow");
+		  //     div.animate({width:'300px',opacity:'0.8'},"slow");
+		  //     div.animate({height:'100px',opacity:'0.4'},"slow");
+		  //     div.animate({width:'100px',opacity:'0.8'},"slow");
+		  //   });
+		});
+		
+		function entersearch(event){
+		    if (event.keyCode == 13)
+		    {
+		        text = document.getElementById('text').value;
+		        
+		        url = 'http://www.baidu.com/s?ie=UTF-8&wd=' + text;
+		        
+		        window.open(url, '_blank');
+		    }
+		}
+		// 按钮点击触发函数
+		// function to(){
+		//     var searchValue = document.getElementById("text").value;
+		
+		//     //window.location.href="http://www.baidu.com/s?ie=UTF-8&wd="+searchValue;
+		//    jumpPage(searchValue);
+		//    //alert(searchValue);
+		// }
+			function baidu() {
+				text = document.getElementById('text').value;
+				
+				url = 'http://www.baidu.com/s?ie=UTF-8&wd=' + text;
+				
+				window.open(url, '_blank');
+			}
+			function zhihu() {
+				text = document.getElementById('text').value;
+				
+				url = 'https://www.zhihu.com/search?type=content&q=' + text;
+				
+				window.open(url, '_blank');
+			}
+			function douban() {
+				text = document.getElementById('text').value;
+				
+				url = 'https://www.douban.com/search?q=' + text;
+				
+				window.open(url, '_blank');
+			}
+			function bili() {
+				text = document.getElementById('text').value;
+				
+				url = 'https://search.bilibili.com/all?keyword=' + text;
+				
+				window.open(url, '_blank');
+			}
+			function chzh() {
+				text = document.getElementById('text').value;
+				
+				url = 'https://czspp.com/xssearch?q=' + text;
+				
+				window.open(url, '_blank');
+			}
+			function xzjs() {
+				// text = document.getElementById('text').value;
+				
+				url = 'https://www.xiaozhongjishu.com/' ;
+				
+				window.open(url, '_blank');
+			}
+			function adzh() {
+				// text = document.getElementById('text').value;
+				
+				url = 'https://adzhp.cn/' ;
+				
+				window.open(url, '_blank');
+			}
+	
+	</script>
+	<body class="bd" id="home" >
+		
+			
+		
+		<div class="main"  >
+			<div  style="width: 100%;height: 2.5rem;background-color: white;position: fixed;top: 0rem;left: 0;">
+				<a onclick="openNav();"  style="float: left;text-align: center;width: 40px;height: 28px; background-color: white;border-radius: 0.125rem;font-size: 1.25rem;margin-top: 5px;"><img src="../menu.png" style="width: 30px;height: 30px;"></a>
+				<h2   style="color: #555555;margin-right: 35px;text-align: center;background-color: ;margin-top: 3px;">超实用导航</h2>
+				
+			</div>
+				
+			
+			<a href="#home" style="margin-top: 10px;text-align: center;width: 30px;height: 30px;background-color: rgba(210,210,210,.5);border-radius: 100%;font-size: 1.25rem;position: fixed;right: 0px;bottom: 6.25rem"><img src="../up.png" style="width: 30px;height: 30px;"></a>
+			<!-- <span class="celan" style="text-align: center;width: 50px;height: 28px; background-color: white;border-radius: 0.125rem;font-size: 1.25rem;position: fixed;right: 0.625rem;top: 5.625rem;" onclick="openNav();">侧栏</span> -->
+			
+			<div id="con2" class="con2" style="display: ;background-color: ;width: 90%;margin: 0 auto;margin-top: 60px;" >
+				<!-- <span class="span-title" >聚合搜索</span> -->
+				<div style="margin-top: 15px;margin-bottom: 30px;" class="container">
+					<!-- form表单回车刷新，不能触发跳转页面，所以改为div-->
+			<!--  <div class="parent">
+						<input  id="text" name="q" type="text" autofocus=true spellcheck="true"/>
+			      <input type="button"  id="submit" value="百度一下" onclick="baidu();" />
+						
+			  </div> -->
+						<h2 style="text-align: center;color: #317EF3;">聚合搜索</h2>
+						<div id="" style="width: 310px;margin: 0 auto;">
+							<div class="parent">
+							<input  class="tx1" id="text" name="q" type="text" autofocus=true spellcheck="true" onkeypress="if (event.keyCode == 13) showResult();" onkeydown="entersearch(event)"/><br>
+							<input class="btn" type="button"   value="百度" onclick="baidu();" />
+							<input class="btn" type="button"   value="知乎" onclick="zhihu();" />
+							<input class="btn" type="button"   value="豆瓣" onclick="douban();" />
+							<input class="btn" type="button"   value="哔哩" onclick="bili();" /><br>
+							<input class="btn2" type="button"   value="厂长资源" onclick="chzh();" />
+							<input class="btn2" type="button"   value="小众技术" onclick="xzjs();" />
+							<input class="btn2" type="button"   value="爱达杂货" onclick="adzh();" />
+						</div>
+						</div>
+						
+					</div>
+			</div>
+			<div class="main-h" style="width: 90%;height: 15.625rem;margin: 0 auto;background-color: #;" >
+				<span style="font-size: 1.5rem;margin: 0 auto;display: block;text-align: center;">统信系统实用网址</span>
+				<ul>
+				
+					<li><a target="_blank" href="https://bbs.chinauos.com/">统信论坛</a></li>
+				
+					<li><a target="_blank" href="https://doc.chinauos.com/content/t53eJ30Bj02BYcgJ8owQ">文档中心</a></li>
+					<li><a target="_blank" href="https://ecology.chinauos.com/">生态适配</a></li>
+					<li><a target="_blank" href="https://www.cnblogs.com/qtzd/p/uos-passwd-reset.html">重置密码</a></li>
+					<li><a target="_blank" href="https://www.chinauos.com/resource/download-professional">镜像下载</a></li>
+					<li><a target="_blank" href="https://www.uniontech.com/next/support/doc">技术文档</a></li>
+				
+						
+				</ul>
+			</div><br>
+			<div style="width: 90%;height: 15.625rem;margin: 0 auto;background-color: #;">
+				<span style="font-size: 1.5rem;margin: 0 auto;display: block;text-align: center;">打印机驱动官网</span>
+				<ul>
+				
+					<li><a target="_blank" href="https://www.kyoceradocumentsolutions.com.cn/support/mfp/download/fsc85208525mfp.html">京瓷驱动</a>
+					
+					</li>
+					
+					<li><a target="_blank" href="https://support.hp.com/cn-zh/drivers/printers">惠普驱动</a></li>
+							
+					
+					<li><a target="_blank" href="https://www.canon.com.cn/supports/download/sims/search/index">佳能驱动</a>
+							
+					</li>
+					<li><a target="_blank" href="https://support-fb.fujifilm.com/setupSupport.do?cid=3&ctry_code=CN&lang_code=zh_CN">富士驱动</a>
+							
+					</li>
+					<li><a target="_blank" href="https://support.hp.com/cn-zh/products/printers/samsung-printers">三星驱动</a>
+							
+					</li>
+				
+						
+				</ul>
+			</div><br>
+			<div style="width: 90%;height: 15.625rem;margin: 0 auto;background-color: #;">
+				<span style="font-size: 1.5rem;margin: 0 auto;display: block;text-align: center;">Linux系统实用网址</span>
+				<ul>
+				
+					<li><a target="_blank" href="https://blog.csdn.net/weixin_38407447/article/details/90581454">linux基础</a>
+							
+					</li>
+					
+					<li><a target="_blank" href="https://www.cnblogs.com/dengyungao/p/8523628.html">Linux命令</a></li>
+							
+					<li><a target="_blank" href="http://www.srcmini.com/50966.html#heading_0">在线终端</a></li>
+					
+					<li><a style="font-size: 1.25rem;" target="_blank" href="https://blog.csdn.net/weixin_30622181/article/details/96754112">中标更改密码</a></li>
+					<li><a style="font-size: 1.25rem;" target="_blank" href="https://www.cnblogs.com/warmlight/p/11606146.html">中标安装软件</a></li>
+					
+				
+						
+				</ul>
+			</div><br>
+			<div style="width: 70%;height: 18.75rem;margin: 0 auto;background-color: #;">
+				<span style="font-size: 1.5rem;display: block;text-align: center;">网络及数据库</span>
+				<ul style="width: 100%;">
+					<li style="width: 100%;margin: 5px 0;"><a target="_blank" href="https://blog.csdn.net/qq_34028816/article/details/109887378">交换机的基本配置</a></li>
+							
+					<li style="width: 100%;margin: 5px 0;"><a target="_blank" href="https://blog.csdn.net/li1914309758/article/details/79900011">VLAN及子网划分</a></li>
+					<li style="width: 100%;margin: 5px 0;"><a target="_blank" href="https://www.52pojie.cn/thread-1572162-1-1.html">mysql初学者速查</a>
+							
+					</li>
+				
+						
+				</ul>
+			</div><br>
+		</div>
+		
+		<div id="mySidenav" class="sidenav" style="position: fixed;background-color: #ccc;transition:.5s;width: 220px;left: -72%;">
+		<h2 style="margin-left: 30px;">快速访问</h2>
+		  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+		  <a href="#" id="a">运维查询页</a>
+		  <a href="#">精品导航页</a>
+		  <a href="#">聚合导航页</a>
+		  <a href="#">功能测试页</a>
+		  <a href="#">命令速查</a>
+		  
+		</div>
+		<div id="mySidenav2" class="sidenav" style="background-color: rgba(255, 255, 255, .1);transition:0s;"onclick="closeNav()">
+		 
+		
+		
+		  
+		
+	</body>
+
+</html>
+
+
+
+
+
