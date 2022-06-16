@@ -1,0 +1,83 @@
+{
+  "sites": [
+    {
+      "name": "百度",
+      "id": "baidu",
+      "queryUrl": "https://www.baidu.com/s?wd={}"
+    },
+    {
+      "name": "谷歌",
+      "id": "google",
+      "queryUrl": "http://www.google.com/search?q={}"
+    },
+    {
+      "name": "搜狗",
+      "id": "sogou",
+      "queryUrl": "https://www.sogou.com/web?query={}"
+    },
+		    {
+		  "name": "必应",
+		  "id": "biying",
+		  "queryUrl": "https://cn.bing.com/search?q={}"
+			},
+		
+    {
+      "name": "京东",
+      "id": "jd",
+      "queryUrl": "http://search.jd.com/Search?enc=utf-8&keyword={}"
+    },
+    {
+      "name": "淘宝",
+      "id": "taobao",
+      "queryUrl": "https://s.taobao.com/search?q={}"
+    },
+    {
+      "name": "微信",
+      "id": "weixin",
+      "queryUrl": "http://weixin.sogou.com/weixin?type=2&query={}&ie=utf8"
+		},
+    {
+      "name": "知乎",
+      "id": "zhihu",
+      "queryUrl": "https://www.zhihu.com/search?q={}"
+    },
+    {
+      "name": "微博",
+      "id": "weibo",
+      "queryUrl": "http://s.weibo.com/weibo/{}"
+    },
+    {
+      "name": "豆瓣",
+      "id": "douban",
+      "queryUrl": "https://www.douban.com/search?q={}"
+    },
+	
+	{
+	  "name": "B站",
+	  "id": "bzhan",
+	  "queryUrl": "https://search.bilibili.com/all?keyword={}"
+	},
+	{
+	  "name": "资源",
+	  "id": "yingshi",
+	  "queryUrl": "https://www.bd2020.com/search.jspx?q={}"
+	},
+	{
+	  "name": "影视1",
+	  "id": "zaixian",
+	  "queryUrl": "https://www.jiujiukanpian.com/search?wd={}",
+	  "color": "success"
+	},
+	{
+	  "name": "影视2",
+	  "id": "zaixiankan2",
+	  "queryUrl": "https://aidi.tv/vsearch/-------------.html?wd={}&submit=",
+	  "color": "danger"
+	},		
+    {
+      "name": "地图",
+      "id": "ditu",
+      "queryUrl": "http://ditu.amap.com/search?query={} "
+    }
+  ]
+}
