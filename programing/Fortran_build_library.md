@@ -6,6 +6,10 @@
 
 [Creating Static Libraries (intel.com)](https://software.intel.com/content/www/us/en/develop/documentation/fortran-compiler-oneapi-dev-guide-and-reference/top/compiler-reference/libraries/creating-static-libraries.html)
 
+
+
+
+
 ## 一、Windows
 
 #### （一）方式一
@@ -40,18 +44,21 @@ To build a static library using the command line:
 
    ```
    ifort -c my_source1.f90 my_source2.f90 my_source3.f90
+   ifort -c ex0842s.f90
    ```
 
 2. Use the Intel® xiar tool to create the library file from the object files:
 
    ```
    xiar rc my_lib.a my_source1.o my_source2.o my_source3.o
+   xiar rc ex0842s.a ex0842s.o
    ```
 
 3. Compile and link your project with your new library:
 
    ```
    ifort main.f90 my_lib.a
+   ifort ex0842m.f90 ex0842s.a
    ```
 
 If your library file and source files are in different directories, use the -Ldir option to indicate where your library is located:
@@ -144,12 +151,24 @@ First, create the .o file, such as octagon.o in the following example:
 
 ```fortran
 ifort -c -fpic octagon.f90
+ifort -c -fpic ex0842s.f90
 ```
 
 The file octagon.o is then used as input to the ld command to create the shared library. The following example shows the command to create a shared library named octagon.so on a Linux operating system:
 
+
+
+```
+export LD_LIBRARY_PATH=/public/software/compiler/intel/composer_xe_2016.3.210/compiler/lib/intel64_lin/
+```
+
+
+
 ```fortran
 ld -shared octagon.o \
+     -lifport -lifcoremt -limf -lm -lcxa \
+     -lpthread -lirc -lunwind -lc -lirc_s
+ld -shared ex0842s.o \
      -lifport -lifcoremt -limf -lm -lcxa \
      -lpthread -lirc -lunwind -lc -lirc_s
 ```
@@ -169,3 +188,35 @@ Once the shared library is created, it must be installed for private or system-w
   
 
 - To install a *system-wide* shared library, place the shared library file in one of the standard directory paths used by ld .
+
+
+
+
+
+## 源程序
+
+ex0842m.f90为主程序文件，ex0842s.f90为子程序文件。
+
+ 
+
+!-------------ex0842m.f90-----------
+
+program ex0842m
+ implicit none
+ call sub()
+ stop
+end
+
+!-------------------------------------------
+
+ 
+
+!-----------ex0842s.f90---------------
+
+subroutine sub()
+ implicit none
+ write(*,*) "This is subroutine"
+ return
+end
+
+!----------------------------------------
